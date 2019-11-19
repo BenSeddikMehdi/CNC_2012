@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include "FirstProblem.h"
 
 int main() {
-    printf("Hello, World!\n");
+    char Sum[5];
+    adder("122","33",Sum);
     return 0;
 }

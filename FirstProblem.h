@@ -46,11 +46,11 @@ unsigned int length(const char string[]) {
 }
 
 unsigned int power(unsigned int a, unsigned int b) {
-    unsigned int p = 1;
+    unsigned int ans = 1;
     for (unsigned int i = 0; i < b; ++i) {
-        p *= a;
+        ans *= a;
     }
-    return p;
+    return ans;
 }
 
 void adder(char S1[], char S2[], char Sum[]) {

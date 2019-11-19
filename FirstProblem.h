@@ -43,6 +43,7 @@ unsigned int length(const char string[]) {
     while (string[i] != '\0')i++;
     return i;
 }
+
 unsigned int power(unsigned int a, unsigned int b) {
     unsigned int p = 1;
     for (unsigned int i = 0; i < b; ++i) {
@@ -50,6 +51,7 @@ unsigned int power(unsigned int a, unsigned int b) {
     }
     return p;
 }
+
 void adder(char S1[], char S2[], char Sum[]) {
     unsigned int a = 0, i = 0, k = 0, b = 0, j = 0;
     unsigned int n1 = length(S1), n2 = length(S2), n = 0;

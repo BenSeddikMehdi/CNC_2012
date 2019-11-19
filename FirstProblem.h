@@ -38,24 +38,14 @@ void deleteZeros() {
 
 /* Question A-3 */
 /****************/
+unsigned int length(const char string[]) {
+    unsigned int i = 0;
+    while (string[i] != '\0')i++;
+    return i;
+}
 void adder(char S1[], char S2[], char Sum[]) {
     unsigned int a = 0, i = 0, k = 0;
-    unsigned int n1 = strlen(S1), n2 = strlen(S2), n = 0;
-    if (n1 > n2) {
-        n = n1 + 1;
-        for (i = 0; i < n2; ++i) {
-            a = a/10 + S1[n1-i-1] + S2[n2-i-1] - 2*'0';
-            Sum[n-1-i] = '0' + a%10;
-        }
-        for (k = i; k < n1; ++k) {
-            a = a/10 + S1[n1-k-1] - '0';
-            Sum[n-1-k] = '0' + a%10;
-        }
-        a = a/10 - '0';
-        Sum[k] = a + '0';
-        Sum[k+1] = '\0';
-    }
-    printf("Sum = %s", Sum);
+    unsigned int n1 = length(S1), n2 = length(S2), n = 0;
 }
 
 #endif //CNC_2012_FIRSTPROBLEM_H

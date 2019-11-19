@@ -10,16 +10,17 @@
 
 /* Question A-1 */
 /****************/
-char S[] = "0000607";
-int stringNumbers() {
+//char S[] = "0000607";
+int stringNumbers(char S[]) {
     for (int i = 0; S[i] != '\0' ; ++i) {
-        if (S[i] < 48 || S[i] > 57) return 0;
+        if (S[i] < '0' || S[i] > '9') return 0;
     }
     return 1;
 }
 
 /* Question A-2 */
 /****************/
+/*
 void deleteZeros() {
     int i = 0, k = 0;
     for (i = 0; S[i] != '\0'; ++i) {
@@ -36,6 +37,7 @@ void deleteZeros() {
         S[k+1] = '\0';
     }
 }
+*/
 
 /* Question A-3 */
 /****************/

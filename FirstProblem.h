@@ -43,26 +43,30 @@ unsigned int length(const char string[]) {
     while (string[i] != '\0')i++;
     return i;
 }
-void adder(char S1[], char S2[], char Sum[]) {
-    unsigned int a = 0, i = 0, k = 0;
-    unsigned int n1 = length(S1), n2 = length(S2), n = 0;
-    char ans[] = "";
-    if (n1 > n2) {
-        n = n1 + 1;
-        for (i = 0; i < n2; ++i) {
-            a = a / 10 + S1[n1-1-i] + S2[n2-1-i] - 2*'0';
-            k = a % 10;
-            ans[n-1-i] = (char) (k + '0');
-        }
-        ans[n-1-i] = '\0';
-        /*for (k = i; k < n1; ++k) {
-            a = a/10 + S1[n1-1-k] - '0';
-            ans[n-1-k] = (char) (a%10 + '0');
-        }
-        ans[k] = (char) (a/10 + '0');
-        ans[++k] = '\0';*/
-        printf("Sum = %s\na = %u\n", ans, a);
+unsigned int power(unsigned int a, unsigned int b) {
+    unsigned int p = 1;
+    for (unsigned int i = 0; i < b; ++i) {
+        p *= a;
     }
+    return p;
+}
+void adder(char S1[], char S2[], char Sum[]) {
+    unsigned int a = 0, i = 0, k = 0, b = 0, j = 0;
+    unsigned int n1 = length(S1), n2 = length(S2), n = 0;
+    n = n1 + 1;
+    for (i = 0; i < n1; ++i) {
+        a += (S1[n1-i-1] - '0')*power(10, i);
+    }
+    for (k = 0; k < n2; ++k) {
+        b += (S2[n2-k-1] - '0')*power(10, k);
+    }
+    a += b;
+    for (j = 0; j < n; ++j) {
+        Sum[n-j-1] = a % 10 + '0';
+        a /= 10;
+    }
+    Sum[j] = '\0';
+    printf("Sum = %s", Sum);
 }
 
 #endif //CNC_2012_FIRSTPROBLEM_H

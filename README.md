@@ -3,7 +3,7 @@ A solution of CNC_2012 Written in C language
 
 The problem is devided into two parts:
 
-First Problem: Create
+First Problem: Create a psudo 
 
 Second Problem:
 

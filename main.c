@@ -2,8 +2,10 @@
 #include "FirstProblem.h"
 
 int main() {
-    char Sum[] = "";
-    adder("9843","19",Sum);
+    char *ans;
+    //adder("9843","19",Sum);
+    ans = do_ptr(add,"123","324");
+    printf("Sum = %s\n", ans);
 
     return 0;
 }

@@ -73,4 +73,29 @@ void adder(char S1[], char S2[], char Sum[]) {
     printf("Sum = %s", Sum);
 }
 
+typedef char* (*do_operation) (char [], char []);
+
+char* do_ptr(do_operation op_ptr, char S1[], char S2[]) {
+    return op_ptr(S1, S2);
+}
+
+char* add(char S1[], char S2[]) {
+    char Sum[] = "";
+    unsigned int a = 0, i = 0, k = 0, b = 0, j = 0;
+    unsigned int n1 = length(S1), n2 = length(S2), n = 0;
+    if (n1 > n2) {
+        n = n1 + 1;
+        for (i = 0; i < n2; ++i) {
+            a = a/10 + S1[n1-i-1] + S2[n2-1-i] - 2*'0';
+            Sum[n-1-i] = (char) (a % 10 + '0');
+        }
+        for (k = i; k < n1; ++k) {
+            a = a/10 + S1[n1-k-1] - '0';
+            Sum[n-1-k] = (char) (a % 10 + '0');
+        }
+    }
+    return Sum;
+}
+
+
 #endif //CNC_2012_FIRSTPROBLEM_H

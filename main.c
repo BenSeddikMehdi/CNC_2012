@@ -2,10 +2,8 @@
 #include "FirstProblem.h"
 
 int main() {
-    char Sum[] = "0000000";
-    deleteZeros(Sum);
-    printf("%s ", Sum);
-    // adder("9843","33",Sum);
+    char Sum[] = "";
+    adder("9843","99",Sum);
 
     return 0;
 }

@@ -69,6 +69,7 @@ void adder(char S1[], char S2[], char Sum[]) {
         a /= 10;
     }
     Sum[j] = '\0';
+    deleteZeros(Sum);
     printf("Sum = %s", Sum);
 }
 

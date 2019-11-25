@@ -73,13 +73,13 @@ void adder(char S1[], char S2[], char Sum[]) {
     printf("Sum = %s", Sum);
 }
 
-typedef void (*do_operation) (char [], char [], char[]);
+typedef char* (*do_operation) (char [], char [], char[]);
 
-void do_ptr(do_operation op_ptr, char S1[], char S2[], char Sum[]) {
+char* do_ptr(do_operation op_ptr, char S1[], char S2[], char Sum[]) {
     op_ptr(S1, S2, Sum);
 }
 
-void add(char S1[], char S2[], char Sum[]) {
+char* add(char S1[], char S2[], char Sum[]) {
     unsigned int a = 0, i = 0, k = 0, b = 0, j = 0;
     unsigned int n1 = length(S1), n2 = length(S2), n = 0;
     if (n1 >= n2) {
@@ -95,11 +95,12 @@ void add(char S1[], char S2[], char Sum[]) {
         }
         ans[n-1-k] = (char) (a/10 + '0');
         ans[n] = '\0';
+        deleteZeros(ans);
         strcpy(Sum, ans);
     } else {
         n = n2 + 1;
         char ans[n];
-        for (i = 0; i < n1; ++i) {//999 1122
+        for (i = 0; i < n1; ++i) {
             a = a/10 + S1[n1-i-1] + S2[n2-1-i] - 2*'0';
             ans[n-1-i] = (char) (a % 10 + '0');
         }
@@ -112,6 +113,7 @@ void add(char S1[], char S2[], char Sum[]) {
         deleteZeros(ans);
         strcpy(Sum, ans);
     }
+    return Sum;
 }
 
 

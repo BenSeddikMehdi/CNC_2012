@@ -8,6 +8,9 @@
 
 #include <string.h>
 
+/****************************/
+/*A : String Representation*/
+/****************************/
 /* Question A-1 */
 /****************/
 //char S[] = "0000607";
@@ -23,7 +26,7 @@ int stringNumbers(const char string[]) {
 void deleteZeros(char string[]) {
     int i = 0, k = 0;
     for (i = 0; string[i] != '\0'; ++i) {
-        if (string[i] != 48) break;
+        if (string[i] != '0') break;
     }
     if (i < strlen(string)) {
         for (k = 0; string[i] != '\0'; ++k) {
@@ -76,11 +79,11 @@ void adder(char S1[], char S2[], char Sum[]) {
 typedef char* (*do_operation) (char [], char [], char[]);
 
 char* do_ptr(do_operation op_ptr, char S1[], char S2[], char Sum[]) {
-    op_ptr(S1, S2, Sum);
+    return op_ptr(S1, S2, Sum);
 }
 
 char* add(char S1[], char S2[], char Sum[]) {
-    unsigned int a = 0, i = 0, k = 0, b = 0, j = 0;
+    unsigned int a = 0, i = 0, k = 0;
     unsigned int n1 = length(S1), n2 = length(S2), n = 0;
     if (n1 >= n2) {
         n = n1 + 1;
@@ -114,6 +117,25 @@ char* add(char S1[], char S2[], char Sum[]) {
         strcpy(Sum, ans);
     }
     return Sum;
+}
+
+
+/****************************/
+/*B : Linked List Representation*/
+/****************************/
+
+typedef struct List {
+    short int part;
+    struct List *next;
+} NumberList;
+
+/* Question 4 */
+/**************/
+NumberList *gatherNumbers(char S[]) {
+    NumberList do_gather = {0, NULL};
+    for (short int i = 0; i < 4; ++i) {
+        do_gather.part += S[i] - '0';
+    }
 }
 
 

@@ -3,7 +3,7 @@ A solution of CNC_2012 Written in C language
 
 The problem is devided into two parts:
 
-First Problem: Create a pseudo Language.
+First Problem: Create a Pseudo-Language.
 
 Second Problem:
 

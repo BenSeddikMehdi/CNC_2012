@@ -57,8 +57,29 @@ void ksa_algorithm(void) {
     }
 }
 
-/***************************/
-/* Phase II- Pseudo */
+/***********************************************/
+/* Phase II- Pseudo Random Generator Algorithm */
+
+/**************/
+/* Question 5 */
+typedef int (*do_operation)(int, int);
+
+int do_operation_ptr(do_operation op, int a, int b) {
+    return op(a, b);
+}
+int power(int a, int b) {
+    int p = 1;
+    for (int i = 0; i < b; ++i) {
+        p *= a;
+    }
+    return p;
+}
+
+void dec_to_bin(int bit[], int number) {
+    for (int i = 0; i < 8; ++i) {
+
+    }
+}
 
 
 

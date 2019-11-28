@@ -11,9 +11,9 @@
 
 #define L1 256
 #define L2 256
-char cleanText[L1];
-char key[L2];
-char encryptedText[L1];
+char cleanText[L1] = "";
+char key[L2] = "";
+char encryptedText[L1] = "";
 char K[256];
 int S[256];
 
@@ -124,12 +124,12 @@ int orExclusive(int x, int y) {
 void pgra_algorithm(void) {
     int i = 0, j = 0;
     int octet;
-    for (int a = 0; a < L1; ++a) {
+    for (int a = 0; a < L1-1; ++a) {
         i = (i + 1) % 256;
         j = (j + cleanText[i]) % 256;
         swap_S(i, j);
         octet = S[(S[i] + S[j]) % 256];
-        encryptedText[a] = do_or_exclusive(orExclusive, key(a), octet);
+        encryptedText[a] = (char) do_or_exclusive(orExclusive, key[a], octet);
     }
 }
 

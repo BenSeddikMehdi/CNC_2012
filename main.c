@@ -3,7 +3,7 @@
 #include "SecondProblem.h"
 int main() {
     printf("5 OR 6 = %d",
-            do_or_exclusive(orExclusive, 5, 6));
+            do_or_exclusive(orExclusive, 255, 6));
 
     return 0;
 }

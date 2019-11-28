@@ -115,7 +115,6 @@ int orExclusive(int x, int y) {
     for (int i = 0; i < 8; ++i) {
         if (xBin[i] == yBin[i]) zBin[i] = 0;
         else zBin[i] = 1;
-
     }
     return do_bin_to_dec_operation(bin_to_dec, zBin);
 }

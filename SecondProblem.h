@@ -62,25 +62,62 @@ void ksa_algorithm(void) {
 
 /**************/
 /* Question 5 */
-typedef int (*do_operation)(int, int);
-
-int do_operation_ptr(do_operation op, int a, int b) {
-    return op(a, b);
-}
-int power(int a, int b) {
-    int p = 1;
-    for (int i = 0; i < b; ++i) {
-        p *= a;
-    }
-    return p;
-}
-
 void dec_to_bin(int bit[], int number) {
     for (int i = 0; i < 8; ++i) {
-
+        bit[8-i-1] = number % 2;
+        number /= 2;
     }
 }
 
+/**************/
+/* Question 6 */
+typedef int (*do_two_power) (int);
 
+int do_two_power_operation(do_two_power op, int a) {
+    return op(a);
+}
+int two_to_power(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return 2*two_to_power(n-1);
+    }
+}
+
+/**************/
+/* Question 7 */
+typedef int (*do_bin_to_dec) (const int []);
+
+int do_bin_to_dec_operation(do_bin_to_dec op, const int bit[]) {
+    return op(bit);
+}
+
+int bin_to_dec(const int bit[]) {
+    int octet = 0;
+    for (int i = 0; i < 8; ++i) {
+        octet += bit[i]*do_two_power_operation(two_to_power,8-i-1);
+    }
+    return octet;
+}
+
+/**************/
+/* Question 8 */
+typedef int (*do_exclusive) (int, int);
+
+int do_or_exclusive(do_exclusive op, int x, int y) {
+    return op(x, y);
+}
+
+int orExclusive(int x, int y) {
+    int xBin[8] = {0}, yBin[8] = {0}, zBin[8] = {0};
+    dec_to_bin(xBin, x);
+    dec_to_bin(yBin, y);
+    for (int i = 0; i < 8; ++i) {
+        if (xBin[i] == yBin[i]) zBin[i] = 0;
+        else zBin[i] = 1;
+
+    }
+    return do_bin_to_dec_operation(bin_to_dec, zBin);
+}
 
 #endif //CNC_2012_SECONDPROBLEM_H

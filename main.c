@@ -2,7 +2,8 @@
 //#include "FirstProblem.h"
 #include "SecondProblem.h"
 int main() {
-    int a = do_operation_ptr(power, 3, 4);
-    printf("a^b = %d", a);
+    printf("5 OR 6 = %d",
+            do_or_exclusive(orExclusive, 5, 6));
+
     return 0;
 }

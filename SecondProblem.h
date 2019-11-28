@@ -119,4 +119,18 @@ int orExclusive(int x, int y) {
     return do_bin_to_dec_operation(bin_to_dec, zBin);
 }
 
+/**************/
+/* Question 9 */
+void pgra_algorithm(void) {
+    int i = 0, j = 0;
+    int octet;
+    for (int a = 0; a < L1; ++a) {
+        i = (i + 1) % 256;
+        j = (j + cleanText[i]) % 256;
+        swap_S(i, j);
+        octet = S[(S[i] + S[j]) % 256];
+        encryptedText[a] = do_or_exclusive(orExclusive, key(a), octet);
+    }
+}
+
 #endif //CNC_2012_SECONDPROBLEM_H

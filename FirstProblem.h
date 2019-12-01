@@ -133,24 +133,47 @@ typedef struct List {
 
 /* Question 4 */
 /**************/
-NumberList_t *gatherNumbers(const char S[]) {
-    int16_t a = 0;
-    int8_t n = 4;
-    NumberList_t *firstElement = malloc(n), stringList;
-    for (int i = 0; i < n; ++i) {
-        a += (S[i] - '0')*power(10,n-i-1);
-    }
-    stringList.part = a;
-    stringList.next = NULL;
-    firstElement = &stringList;
-    return firstElement;
-}
-void printStruct(NumberList_t *newStruct) {
-    while (newStruct != NULL) {
-        printf("part = %d\n", newStruct->part);
-        newStruct = newStruct->next;
-    }
+/* Function to create a new node with given data */
+NumberList_t* newNode(int16_t a) {
+    NumberList_t* new_node = malloc(sizeof(NumberList_t));
+    new_node->part = a;
+    new_node->next = NULL;
+    return new_node;
 }
 
+/* Function to insert a node at the beginning of the Singly Linked List */
+void push(NumberList_t** head_ref, int16_t a) {
+    /* allocate node */
+    NumberList_t* new_node = newNode(a);
+
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+
+    /* move the head to point to the new node */
+    (*head_ref)    = new_node;
+}
+
+NumberList_t* gatherNumbers(const char S[]) {// S = "7964 3756 9423 4"
+    NumberList_t *firstElement = NULL;
+    int16_t a = 0;
+    int8_t n = 4;
+    for (int j = 0; S[j] != '\0'; j = j + n) {
+        a = 0;
+        for (int i = j; i < n + j; ++i) {
+            a += (S[i] - '0')*power(10,n+j-i-1);
+        }
+        push(&firstElement, a);
+    }
+    return firstElement;
+}
+
+void printStruct(NumberList_t *newStruct) {
+    printf("part = ");
+    while (newStruct != NULL) {
+        printf("%d ", newStruct->part);
+        newStruct = newStruct->next;
+    }
+    printf("\n");
+}
 
 #endif //CNC_2012_FIRSTPROBLEM_H

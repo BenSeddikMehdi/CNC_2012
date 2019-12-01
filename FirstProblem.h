@@ -7,6 +7,8 @@
 #define CNC_2012_FIRSTPROBLEM_H
 
 #include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 /****************************/
 /*A : String Representation*/
@@ -125,16 +127,28 @@ char* add(char S1[], char S2[], char Sum[]) {
 /****************************/
 
 typedef struct List {
-    short int part;
+    int16_t part;
     struct List *next;
-} NumberList;
+} NumberList_t;
 
 /* Question 4 */
 /**************/
-NumberList *gatherNumbers(char S[]) {
-    NumberList do_gather = {0, NULL};
-    for (short int i = 0; i < 4; ++i) {
-        do_gather.part += S[i] - '0';
+NumberList_t *gatherNumbers(const char S[]) {
+    int16_t a = 0;
+    int8_t n = 4;
+    NumberList_t *firstElement = malloc(n), stringList;
+    for (int i = 0; i < n; ++i) {
+        a += (S[i] - '0')*power(10,n-i-1);
+    }
+    stringList.part = a;
+    stringList.next = NULL;
+    firstElement = &stringList;
+    return firstElement;
+}
+void printStruct(NumberList_t *newStruct) {
+    while (newStruct != NULL) {
+        printf("part = %d\n", newStruct->part);
+        newStruct = newStruct->next;
     }
 }
 

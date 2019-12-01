@@ -150,7 +150,7 @@ void push(NumberList_t** head_ref, int16_t a) {
     new_node->next = (*head_ref);
 
     /* move the head to point to the new node */
-    (*head_ref)    = new_node;
+    (*head_ref)   = new_node;
 }
 
 NumberList_t* gatherNumbers(const char S[]) {// S = "7964 3756 9423 4"

@@ -136,7 +136,7 @@ typedef struct List {
 /* Function to create a new node with given data */
 NumberList_t* newNode(uint32_t a) {
     NumberList_t* new_node = malloc(sizeof(NumberList_t));
-    new_node->part = (int16_t ) a;
+    new_node->part = (int16_t) a;
     new_node->next = NULL;
     return new_node;
 }
@@ -183,7 +183,7 @@ NumberList_t* gatherNumbers(const char S[]) {
 }
 
 void printStruct(NumberList_t *newStruct) {
-    printf("part = ");
+    printf("Number List = ");
     while (newStruct != NULL) {
         printf("%d ", newStruct->part);
         newStruct = newStruct->next;

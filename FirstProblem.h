@@ -134,15 +134,15 @@ typedef struct List {
 /* Question 4 */
 /**************/
 /* Function to create a new node with given data */
-NumberList_t* newNode(int16_t a) {
+NumberList_t* newNode(uint32_t a) {
     NumberList_t* new_node = malloc(sizeof(NumberList_t));
-    new_node->part = a;
+    new_node->part = (int16_t ) a;
     new_node->next = NULL;
     return new_node;
 }
 
 /* Function to insert a node at the beginning of the Singly Linked List */
-void push(NumberList_t** head_ref, int16_t a) {
+void push(NumberList_t** head_ref, uint32_t a) {
     if ((*head_ref) == NULL) {
         /* allocate node */
         NumberList_t* new_node = newNode(a);
@@ -156,14 +156,26 @@ void push(NumberList_t** head_ref, int16_t a) {
     }
 }
 
-NumberList_t* gatherNumbers(const char S[]) {// S = "7964 3756 9423 4"
+NumberList_t* gatherNumbers(const char S[]) {
     NumberList_t *firstElement = NULL;
-    int16_t a = 0;
-    int8_t n = 4;
-    for (int j = 0; S[j] != '\0'; j = j + n) {
+    uint32_t a = 0, j = 0;
+    uint8_t n = 4, i = 0, k = 0;
+    uint8_t quotient = (uint8_t) length(S) / 4, remain = (uint8_t) length(S) % 4;
+    for (i = 0; i < quotient; ++i) {
         a = 0;
-        for (int i = j; i < n + j; ++i) {
-            a += (S[i] - '0')*power(10,n+j-i-1);
+        k = 0;
+        for (j = i*n; j < n*(i+1); ++j) {
+            a += (S[j] - '0')*power(10,n-k-1);
+            k++;
+        }
+         push(&firstElement, a);
+    }
+    if (remain != 0) {
+        a = 0;
+        k = remain;
+        for (int l = j; l < (int) length(S); ++l) {
+            a += (S[l] - '0')*power(10,k-1);
+            k--;
         }
         push(&firstElement, a);
     }

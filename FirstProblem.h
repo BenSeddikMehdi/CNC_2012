@@ -143,14 +143,17 @@ NumberList_t* newNode(int16_t a) {
 
 /* Function to insert a node at the beginning of the Singly Linked List */
 void push(NumberList_t** head_ref, int16_t a) {
-    /* allocate node */
-    NumberList_t* new_node = newNode(a);
+    if ((*head_ref) == NULL) {
+        /* allocate node */
+        NumberList_t* new_node = newNode(a);
+        /* link the old list off the new node */
+        new_node->next = (*head_ref);
 
-    /* link the old list off the new node */
-    new_node->next = (*head_ref);
-
-    /* move the head to point to the new node */
-    (*head_ref)   = new_node;
+        /* move the head to point to the new node */
+        (*head_ref) = new_node;
+    } else {
+        push(&(*head_ref)->next, a);
+    }
 }
 
 NumberList_t* gatherNumbers(const char S[]) {// S = "7964 3756 9423 4"

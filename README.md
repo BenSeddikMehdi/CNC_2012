@@ -5,7 +5,7 @@ The problem is devided into two parts:
 
 First Problem: Create a Pseudo-Language.
 
-Second Problem:
+Second Problem: Representing numbers as Linked lists
 
 
 

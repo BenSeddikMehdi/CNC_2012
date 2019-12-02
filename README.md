@@ -3,9 +3,10 @@ A solution of CNC_2012 Written in C language
 
 The problem is devided into two parts:
 
-First Problem: Representation of large natural integers numbers.
+First Problem: Part- A: Representation of large natural integers numbers.
+               Part- B: Representing numbers as Linked lists.
 
-Second Problem: Representing numbers as Linked lists
+Second Problem: 
 
 
 

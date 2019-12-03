@@ -2,7 +2,7 @@
 #include "FirstProblem.h"
 #include "SecondProblem.h"
 int main() {
-    char string[] = "000000000080";
+    char string[] = "60784350783450000";
     NumberList_t *test = NULL;
     test = gatherNumbers(string);
     printStruct(test);

@@ -168,7 +168,7 @@ NumberList_t* gatherNumbers(const char S[]) {
             a += (S[j] - '0')*power(10,n-k-1);
             k++;
         }
-         push(&firstElement, a);
+        push(&firstElement, a);
     }
     if (remain != 0) {
         a = 0;

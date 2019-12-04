@@ -166,8 +166,12 @@ void do_rc4_file(RC4_Algorithm_File op, char* rawFile, char* rc4key, char* encry
 
 void rc4File(char* rawFile, char* rc4key, char* encryptedFile) {
     FILE* pFile = fopen(rawFile, "r");
-
-
+    FILE* pEncryptedFile = fopen(encryptedFile, "w");
+    while (pFile != NULL) {
+        char* line = NULL;
+        fgets(line, 80, pFile);
+        fputs(do_rc4_string(rc4String, line, 80, rc4key), pEncryptedFile);
+    }
 }
 
 #endif //CNC_2012_SECONDPROBLEM_H

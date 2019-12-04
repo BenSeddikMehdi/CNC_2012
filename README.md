@@ -1,5 +1,6 @@
 # CNC_2012
-A solution of CNC_2012 Written in C language
+
+A solution of CNC_2012 : Common National Competition
 
 The problem is devided into two parts:
 

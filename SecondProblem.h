@@ -59,6 +59,7 @@ void ksa_algorithm(void) {
 
 /***********************************************/
 /* Phase II- Pseudo Random Generator Algorithm */
+/***********************************************/
 
 /**************/
 /* Question 5 */
@@ -76,6 +77,7 @@ typedef int (*do_two_power) (int);
 int do_two_power_operation(do_two_power op, int a) {
     return op(a);
 }
+
 int two_to_power(int n) {
     if (n == 0) {
         return 1;
@@ -131,6 +133,24 @@ void pgra_algorithm(void) {
         octet = S[(S[i] + S[j]) % 256];
         encryptedText[a] = (char) do_or_exclusive(orExclusive, key[a], octet);
     }
+}
+
+/********************************************************/
+/* Part B: Encryption of a text file using RC4 Algorithm*/
+/********************************************************/
+
+/**************/
+/* Question 10 */
+
+typedef char* (*RC4_Algorithm)(char*, int, char*);
+
+char* do_rc4(RC4_Algorithm op, char* rawString, int L, char* rc4_key) {
+    return op(rawString, L, rc4_key);
+}
+
+char* rc4String(char* rawString, int L, char* rc4_key) {
+
+    return rc4_key;
 }
 
 #endif //CNC_2012_SECONDPROBLEM_H

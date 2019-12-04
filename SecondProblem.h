@@ -139,18 +139,35 @@ void pgra_algorithm(void) {
 /* Part B: Encryption of a text file using RC4 Algorithm*/
 /********************************************************/
 
-/**************/
-/* Question 10 */
+/*****************/
+/* Question 10-a */
 
 typedef char* (*RC4_Algorithm)(char*, int, char*);
 
-char* do_rc4(RC4_Algorithm op, char* rawString, int L, char* rc4_key) {
+char* do_rc4_string(RC4_Algorithm op, char* rawString, int L, char* rc4_key) {
     return op(rawString, L, rc4_key);
 }
 
 char* rc4String(char* rawString, int L, char* rc4_key) {
+    strncpy(rawString, cleanText, L);
+    strncpy(rc4_key, key, L2);
+    pgra_algorithm();
+    return encryptedText;
+}
 
-    return rc4_key;
+/*****************/
+/* Question 10-b */
+
+typedef void (*RC4_Algorithm_File)(char*, char*, char*);
+
+void do_rc4_file(RC4_Algorithm_File op, char* rawFile, char* rc4key, char* encryptedFile){
+    op(rawFile, rc4key, encryptedFile);
+}
+
+void rc4File(char* rawFile, char* rc4key, char* encryptedFile) {
+    FILE* pFile = fopen(rawFile, "r");
+
+
 }
 
 #endif //CNC_2012_SECONDPROBLEM_H
